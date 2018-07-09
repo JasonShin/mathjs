@@ -12,7 +12,12 @@ exports.getMatrixDataType = function (object) {
     // Checking the array type
     const result = _object.reduce((types, vector) => {
       vector.forEach((entity) => {
-        const entityType = typeof entity
+        let entityType = typeof entity
+
+        // typeof null is always object..
+        if (entity === null) {
+          entityType = 'null'
+        }
         if (types.indexOf(entityType) === -1) {
           types.push(entityType)
         }
