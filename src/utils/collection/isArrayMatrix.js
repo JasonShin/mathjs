@@ -1,5 +1,6 @@
 /**
- * Checks if the given object is an array
+ * Checks if the given object is a matrix with identical column sizes
+ * for each row
  * @param object
  * @returns {boolean}
  */
