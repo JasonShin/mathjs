@@ -1,39 +1,46 @@
-'use strict'
+const isArrayMatrix = require('./collection/isArrayMatrix.js')
+const getMatrixDataType = require('./collection/getMatrixDataType')
 
-/**
- * Check the datatype of a given object
- * @param object
- * @return string
- */
-function getMatrixDataType (object) {
-  if (Array.isArray(object) && object.length > 0) {
-    // clone the object to avoid any side effects
-    const _object = object.slice()
-    // Checking the array type
-    const result = _object.reduce((types, vector) => {
-      // Check length
-      vector.forEach((entity) => {
-        const entityType = typeof entity
-        if (types.indexOf(entityType) === -1) {
-          types.push(entityType)
-        }
-      })
-      return types
-    }, [])
-    console.log(result)
-  } else {
-    // do something
-  }
-}
+console.log('isarrmat 1', isArrayMatrix(
+  [ [1, 2], [1, 2] ]
+))
 
-getMatrixDataType(
-  [ [1, 2, 3], [4, 5, 6], ['string', 8, 9] ]
-)
+console.log('isarrmat 2', isArrayMatrix(
+  [ [1, 2], [1] ]
+))
 
-getMatrixDataType(
+console.log('isarrmat 3', isArrayMatrix(
+  [ 1, 2 ]
+))
+
+console.log(getMatrixDataType(
+  [ [1, 2, 3], [4, 5, 6], [1, 8, 9] ]
+))
+
+console.log(getMatrixDataType(
+  [ [1, 2, true], [4, 5, 6], [1, 'string', 9] ]
+))
+
+console.log(getMatrixDataType(
+  [ [1, 2, {}], [4, 5, 6], [1, 1, 9] ]
+))
+
+console.log(getMatrixDataType(
+  [ [1, 2, NaN], [4, 5, 6], [1, 1, 9] ]
+))
+
+console.log(getMatrixDataType(
+  [ [true], [false] ]
+))
+
+console.log(getMatrixDataType(
+  [ ['string'], ['test', 'test'] ]
+))
+
+console.log(getMatrixDataType(
   []
-)
+))
 
-getMatrixDataType(
+console.log(getMatrixDataType(
   [1, 2]
-)
+))
