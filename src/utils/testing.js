@@ -13,10 +13,10 @@ let rows = [];
 for (let row = 0; row < numRows; row++) {
   rows.push(newRow.slice())
 }
-console.time('test')
+console.time('test recursion')
 console.log(getMatrixDataType(rows))
-console.timeEnd('test')
+console.timeEnd('test recursion')
 
-console.time('test2')
+console.time('test plain loop')
 console.log(getMatrixDataType2(rows))
-console.timeEnd('test2')
+console.timeEnd('test plain loop')
